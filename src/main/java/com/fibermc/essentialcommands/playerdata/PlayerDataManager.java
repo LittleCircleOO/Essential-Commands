@@ -199,10 +199,16 @@ public class PlayerDataManager {
 
         ExpressionEvaluationContext<RespawnCondition> ctx = new ExpressionEvaluationContext<>() {
             private boolean isSameWorld() {
+                if(oldPlayerEntity == null){
+                    return true;
+                }
                 return oldPlayerEntity.getWorld().getRegistryKey() == spawnLoc.dim();
             }
 
             private boolean hasNoBed() {
+                if(oldPlayerEntity == null){
+                    return true;
+                }
                 var vanillaPlayerSpawnPoint = oldPlayerEntity.getSpawnPointPosition();
                 return vanillaPlayerSpawnPoint == null;
             }
